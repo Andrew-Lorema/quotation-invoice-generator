@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quotation and Invoice Generator</title>
+
+    <!-- Link CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Quotation & Invoice Generator</h1>
+
+    
+    <!-- Document Information -->
+    <h2>Document Information</h2>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Document Type</label>
+            <select id="documentType">
+                <option value="QUOTATION">Quotation</option>
+                <option value="INVOICE">Invoice</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Document Number</label>
+            <input type="text" id="documentNumber"
+                   placeholder="e.g. QT-001">
+        </div>
+
+        <div class="form-group">
+            <label>Contractor Name</label>
+            <input type="text" id="contractor"
+                   placeholder="Enter contractor name">
+        </div>
+
+        <div class="form-group">
+            <label>Client Name</label>
+            <input type="text" id="client"
+                   placeholder="Enter client name">
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone"
+                   placeholder="Enter phone number">
+        </div>
+
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="date">
+        </div>
+
+    </div>
+
+    <!-- Materials Section -->
+    <h2>Materials</h2>
+
+    <table id="materialsTable">
+
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price (KES)</th>
+                <th>Total (KES)</th>
+                <th class="no-print">Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="materialsBody">
+
+            <tr>
+                <td>
+                    <input type="text"
+                           class="description"
+                           placeholder="Material name">
+                </td>
+
+                <td>
+                    <input type="number"
+                           class="quantity"
+                           min="0"
+                           step="any"
+                           value="1">
+                </td>
+
+                <td>
+                    <input type="number"
+                           class="price"
+                           min="0"
+                           step="any"
+                           value="0">
+                </td>
+
+                <td class="line-total">KES 0.00</td>
+
+                <td class="no-print">
+                    <button class="btn remove-btn"
+                            onclick="removeRow(this)">
+                        Remove
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <button class="btn add-btn no-print"
+            onclick="addMaterial()">
+        + Add Material
+    </button>
+
+    <!-- Labour Section -->
+    <h2>Labour Charges</h2>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Labour Description</label>
+            <input type="text"
+                   id="labourDescription"
+                   placeholder="e.g. Installation and construction">
+        </div>
+
+        <div class="form-group">
+            <label>Labour Cost (KES)</label>
+            <input type="number"
+                   id="labourCost"
+                   min="0"
+                   step="any"
+                   value="0">
+        </div>
+
+    </div>
+
+    <!-- VAT Section -->
+    <h2>Tax and Payment Summary</h2>
+
+    <div class="form-group">
+        <label>VAT Rate (%)</label>
+        <input type="number"
+               id="vatRate"
+               min="0"
+               step="any"
+               value="16">
+    </div>
+
+    <!-- Financial Summary -->
+    <div class="summary">
+
+        <div>
+            <span>Materials Subtotal:</span>
+            <strong id="materialsSubtotal">KES 0.00</strong>
+        </div>
+
+        <div>
+            <span>Labour Cost:</span>
+            <strong id="labourTotal">KES 0.00</strong>
+        </div>
+
+        <div>
+            <span>Subtotal:</span>
+            <strong id="subtotal">KES 0.00</strong>
+        </div>
+
+        <div>
+            <span>VAT:</span>
+            <strong id="vatAmount">KES 0.00</strong>
+        </div>
+
+        <div class="grand-total">
+            <span>Grand Total:</span>
+            <strong id="grandTotal">KES 0.00</strong>
+        </div>
+
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions no-print">
+
+        <button class="btn print-btn"
+                onclick="window.print()">
+            Print / Save as PDF
+        </button>
+
+        <button class="btn reset-btn"
+                onclick="resetForm()">
+            Clear Form
+        </button>
+
+    </div>
+
+    <div class="footer">
+        Generated using Quotation and Invoice Generator
+    </div>
+
+</div>
+
+<!-- Link JavaScript file -->
+<script src="script.js"></script>
+
+</body>
+</html>
